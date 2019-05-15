@@ -1,13 +1,13 @@
 #load library
-require(MASS)
-require(date.table)
-require(ggplot2)
+#require(MASS)
+#require(date.table)
+#require(ggplot2)
 
 #simulation parameters
-N=10000
-sigma1=5
-sigma2=5
-rho=0.7
+#N=10000
+#sigma1=5
+#sigma2=5
+#rho=0.7
 
 #3 treatment groups
 (sample_counts=c(1,1.06,0.94)*1000)
