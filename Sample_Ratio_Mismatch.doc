@@ -32,8 +32,8 @@ B 4979    3904
 > 
 > chisq.test(sample_counts_by_device)
 
-	Pearson's Chi-squared test with Yates'
-	continuity correction
+	Pearson's Chi-squared test with Yates' continuity
+	correction
 
 data:  sample_counts_by_device
 X-squared = 3.9539, df = 1, p-value = 0.04676
@@ -52,6 +52,3 @@ X-squared = 7.4684, df = 1, p-value = 0.006279
 
 data:  sample_counts_by_device[, "Android"]
 X-squared = 0.056329, df = 1, p-value = 0.8124
-
-> 
-> 
