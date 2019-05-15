@@ -1,0 +1,57 @@
+> #3 treatment groups
+> (sample_counts=c(1,1.06,0.94)*1000)
+[1] 1000 1060  940
+> chisq.test(sample_counts,p=c(1/3,1/3,1/3))
+
+	Chi-squared test for given probabilities
+
+data:  sample_counts
+X-squared = 7.2, df = 2, p-value = 0.02732
+
+> #also can use binomial distribtuion
+> 
+> (binom_pvs=sapply(sample_counts,function(x)
++     binom.test(x=x,n=sum(sample_counts), p=1/3)$p.v))
+[1] 1.00000000 0.02118153 0.02013079
+> 
+> 
+> p.adjust(binom_pvs, method = 'bonferroni')
+[1] 1.00000000 0.06354458 0.06039237
+> p.adjust(binom_pvs,method = 'BH')
+[1] 1.00000000 0.03177229 0.03177229
+> p.adjust(binom_pvs,method='holm')
+[1] 1.00000000 0.06039237 0.06039237
+> 
+> #iOS $ Android, 2 trt groups A/B
+> sample_counts_by_device =matrix(c(4710,4979,3925,3904),nrow=2)
+> dimnames(sample_counts_by_device) = list(c('A','B'),c('iOS','Android'))
+> sample_counts_by_device
+   iOS Android
+A 4710    3925
+B 4979    3904
+> 
+> chisq.test(sample_counts_by_device)
+
+	Pearson's Chi-squared test with Yates'
+	continuity correction
+
+data:  sample_counts_by_device
+X-squared = 3.9539, df = 1, p-value = 0.04676
+
+> 
+> chisq.test(sample_counts_by_device[,'iOS'],p=c(.5,.5))
+
+	Chi-squared test for given probabilities
+
+data:  sample_counts_by_device[, "iOS"]
+X-squared = 7.4684, df = 1, p-value = 0.006279
+
+> chisq.test(sample_counts_by_device[,'Android'],p=c(.5,.5))
+
+	Chi-squared test for given probabilities
+
+data:  sample_counts_by_device[, "Android"]
+X-squared = 0.056329, df = 1, p-value = 0.8124
+
+> 
+> 
